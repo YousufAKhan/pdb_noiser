@@ -38,18 +38,19 @@ def generate_random_splits(noise_size):
 # In[ ]:
 
 
-def generate_noised_pdb(structure, noise, path, n):
+def generate_noised_pdb(structure_path, noise, path, n):
     """
     Description:
         Write noised PDB file to the output path
     Input:
-        -structure: The parsed PDB structure with biopython
+        -structure_path: The path to the structure
         -noise: The amount of noise (angstroms) that is desired
         -path: The output directory
         -n: The amount of noised PDB files to generate
     Returns:
     """
     for i in range(n):
+        structure = parser.get_structure("structure", structure_path)
         print('Processing '+str(i)+' out of '+str(n))
         for model in structure:
             for chain in model:
@@ -72,8 +73,7 @@ def main():
     output_dir = sys.argv[2]
     noise = float(sys.argv[3])
     n = int(sys.argv[4])
-    structure = parser.get_structure("structure", input_file)
-    generate_noised_pdb(structure, noise, output_dir, n)
+    generate_noised_pdb(input_file, noise, output_dir, n)
 
 
 # In[ ]:
