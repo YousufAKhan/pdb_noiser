@@ -1,8 +1,11 @@
 # pdb_noiser
 
-# Requirements
+# Package requirements
 
-Biopython
+-Biopython
+-numpy
+-os
+-sys
 
 # Summary
 
